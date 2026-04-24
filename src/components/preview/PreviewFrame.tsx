@@ -20,11 +20,6 @@ export function PreviewFrame() {
       try {
         const files = getAllFiles();
 
-        // Clear error first when we have files
-        if (files.size > 0 && error) {
-          setError(null);
-        }
-
         // Find the entry point - look for App.jsx, App.tsx, index.jsx, or index.tsx
         let foundEntryPoint = entryPoint;
         const possibleEntries = [
@@ -96,7 +91,7 @@ export function PreviewFrame() {
     };
 
     updatePreview();
-  }, [refreshTrigger, getAllFiles, entryPoint, error, isFirstLoad]);
+  }, [refreshTrigger, getAllFiles, entryPoint, isFirstLoad]);
 
   if (error) {
     if (error === "firstLoad") {
